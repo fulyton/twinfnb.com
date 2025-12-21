@@ -8,6 +8,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif;
   color: #222;
   line-height: 1.6;
+  background: #f5f5f5;
 }
 
 /* Navigation Bar - LG Corporate Style */
@@ -21,7 +22,7 @@ body {
 }
 
 .nav-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 60px;
   display: flex;
@@ -58,7 +59,7 @@ body {
   gap: 56px;
   flex: 1;
   justify-content: center;
-  padding: 0 40px;
+  padding: 0 20px;
 }
 
 .nav-item {
@@ -102,6 +103,7 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  background: #fff;
 }
 
 .home-main {
@@ -109,6 +111,9 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .home-content {
@@ -118,10 +123,24 @@ body {
   justify-content: center;
   padding: 40px 60px;
   overflow: hidden;
+  gap: 60px;
+}
+
+/* Added slogan styling for homepage */
+.home-slogan {
+  flex-shrink: 0;
+}
+
+.home-slogan h1 {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #000;
+  white-space: nowrap;
 }
 
 .home-image {
-  max-width: 800px;
+  max-width: 533px; /* Reduced image size to 2/3 */
   width: 100%;
   height: 100%;
   display: flex;
@@ -156,18 +175,23 @@ body {
   min-height: calc(100vh - 80px);
   padding: 80px 60px;
   background: #fff;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .content-container {
-  max-width: 1400px;
   margin: 0 auto;
   display: flex;
   gap: 80px;
   align-items: center;
+  /* Center content by adding justify-content: center */
+  justify-content: center;
 }
 
 .content-left {
   flex: 1;
+  /* Center text content */
+  text-align: center;
 }
 
 .slogan {
@@ -242,7 +266,12 @@ body {
 .franchise-page {
   min-height: calc(100vh - 80px);
   padding: 60px;
-  background: #fafafa;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .franchise-container {
@@ -252,6 +281,8 @@ body {
   padding: 50px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  /* Center form content */
+  text-align: center;
 }
 
 .franchise-container h1 {
@@ -276,6 +307,8 @@ body {
 .form-group {
   display: flex;
   flex-direction: column;
+  /* Align form labels to left for readability */
+  text-align: left;
 }
 
 .form-group label {
@@ -341,6 +374,8 @@ body {
   gap: 10px;
   cursor: pointer;
   font-size: 15px;
+  /* Center checkbox with label */
+  justify-content: center;
 }
 
 .checkbox-label input[type="checkbox"] {
@@ -438,6 +473,14 @@ body {
 
   .home-content {
     padding: 20px;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .home-slogan h1 {
+    font-size: 28px;
+    white-space: normal;
+    text-align: center;
   }
 
   .content-page {
