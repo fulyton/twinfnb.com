@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TwinFNB 프랜차이즈 신청">
+    <title>TwinFNB - 프랜차이즈 신청</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../assets/logo.svg" alt="TwinFNB 로고">
+                <span>TwinFNB</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">홈</a></li>
+                <li><a href="daily-noodle.html">매일 만나면</a></li>
+                <li><a href="daily-rice.html">매일 만나밥</a></li>
+                <li><a href="automation.html">자동화 기계</a></li>
+                <li><a href="Franchise.html" class="active">프랜차이즈 신청</a></li>
+            </ul>
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="kr" aria-label="한국어">KR</button>
+                <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+                <button class="lang-btn" data-lang="cn" aria-label="中文">中文</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-page franchise-page">
+        <section class="hero-section">
+            <h1>프랜차이즈 신청</h1>
+            <p class="hero-subtitle">TwinFNB와 함께 성공적인 비즈니스를 시작하세요</p>
+        </section>
+
+        <section class="franchise-info">
+            <h2>가맹 아이템</h2>
+            <div class="franchise-items">
+                <div class="franchise-item-card">
+                    <h3>매일 만나면</h3>
+                    <p>무인 면집 컨셉</p>
+                </div>
+                <div class="franchise-item-card">
+                    <h3>매일 만나밥</h3>
+                    <p>자동 볶음밥 배달 전문</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="franchise-form-section">
+            <h2>가맹 상담 신청</h2>
+            <form id="franchiseForm" class="franchise-form">
+                <div class="form-group">
+                    <label for="name">이름 *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">연락처 *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">이메일 *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">주소</label>
+                    <input type="text" id="address" name="address">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">문의내용</label>
+                    <textarea id="message" name="message" rows="5"></textarea>
+                </div>
+                
+                <div class="privacy-section">
+                    <h3>개인정보 수집·이용 동의 (필수)</h3>
+                    <div class="privacy-content">
+                        <p>가맹 상담을 위해 개인정보를 수집·이용하는 것에 동의합니다.</p>
+                        <ul>
+                            <li><strong>수집 항목:</strong> 이름, 연락처, 이메일</li>
+                            <li><strong>이용 목적:</strong> 가맹 상담 및 안내</li>
+                            <li><strong>보유 기간:</strong> 상담 목적 달성 후 1년</li>
+                        </ul>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
+                        <label for="privacyConsent">개인정보 수집·이용에 동의합니다</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-button">신청하기</button>
+            </form>
+            <div id="formMessage" class="form-message"></div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>TwinFNB</h4>
+                <p>글로벌 푸드 테크 자동화 기업</p>
+            </div>
+            <div class="footer-section">
+                <h4>연락처</h4>
+                <p>주소: 인천광역시 중구 영종대로 162번길 20, 스타힐스 301호</p>
+                <p>전화: 1588-8888</p>
+                <p>Email: info@twinfnb.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/app.js"></script>
+</body>
+</html>
