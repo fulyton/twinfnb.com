@@ -4,405 +4,455 @@
   box-sizing: border-box;
 }
 
-:root {
-  --nav-bg: #3a3a3a;
-  --nav-text: #ffffff;
-  --primary-color: #c74634;
-  --hover-color: #a03828;
-  --bg-light: #f5f5f5;
-  --text-dark: #333;
-  --border-color: #ddd;
-}
-
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif;
+  color: #222;
   line-height: 1.6;
-  color: var(--text-dark);
-  background-color: #ffffff;
 }
 
-/* Navigation Styles - Based on Oracle design */
-.main-nav {
-  background-color: var(--nav-bg);
-  padding: 0;
+/* Navigation Bar - LG Corporate Style */
+.navbar {
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .nav-container {
   max-width: 1400px;
   margin: 0 auto;
+  padding: 0 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2rem;
-  height: 60px;
+  height: 80px;
+}
+
+.nav-logo {
+  flex-shrink: 0;
+}
+
+.nav-logo a {
+  display: block;
 }
 
 .nav-logo img {
-  height: 40px;
+  height: 38px;
   width: auto;
+  display: block;
 }
 
-.nav-links {
+.nav-logo.logo-error::after {
+  content: "TwinFNB";
+  font-size: 24px;
+  font-weight: 700;
+  color: #222;
+  display: block;
+}
+
+.nav-menu {
   display: flex;
-  list-style: none;
-  gap: 2rem;
+  align-items: center;
+  gap: 56px;
   flex: 1;
   justify-content: center;
-  margin: 0;
+  padding: 0 40px;
 }
 
-.nav-links a {
-  color: var(--nav-text);
+.nav-item {
+  color: #222;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 16px;
   font-weight: 400;
-  transition: color 0.2s;
+  position: relative;
+  padding: 28px 0;
+  transition: color 0.2s ease;
   white-space: nowrap;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--primary-color);
+.nav-item:hover {
+  color: #000;
 }
 
-/* Language Switcher */
-.lang-switcher {
-  display: flex;
-  gap: 0.5rem;
+.nav-item.active {
+  font-weight: 600;
+  color: #000;
 }
 
-.lang-btn {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: var(--nav-text);
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.85rem;
-  transition: all 0.2s;
+.nav-item.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #000;
 }
 
-.lang-btn:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.nav-spacer {
+  width: 120px;
+  flex-shrink: 0;
 }
 
-.lang-btn.active {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-}
-
-/* Home Page Specific Styles */
-body.home-page {
+/* Home Page - No Scroll */
+.home-page {
   height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
 
 .home-content {
-  height: calc(100vh - 60px - 80px);
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 40px 60px;
+  overflow: hidden;
 }
 
-.hero-section {
-  text-align: center;
-  max-width: 1200px;
-}
-
-.slogan {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--text-dark);
-  margin-bottom: 3rem;
-  line-height: 1.3;
-}
-
-.hero-image {
-  margin: 2rem auto;
-}
-
-.hero-image img {
-  max-width: 600px;
+.home-image {
+  max-width: 800px;
   width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-image img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
   height: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  object-fit: contain;
+  display: block;
 }
 
 .home-footer {
-  background-color: var(--nav-bg);
-  color: var(--nav-text);
-  padding: 1.5rem 2rem;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 20px 60px;
+  background: #f8f8f8;
+  border-top: 1px solid #e5e5e5;
 }
 
 .contact-info {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  font-size: 0.9rem;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.8;
 }
 
-.contact-info p {
-  margin: 0;
+/* Content Pages */
+.content-page {
+  min-height: calc(100vh - 80px);
+  padding: 80px 60px;
+  background: #fff;
 }
 
-/* Regular Pages */
-.page-content {
-  min-height: calc(100vh - 60px - 100px);
-  padding: 3rem 2rem;
-}
-
-.content-section {
-  max-width: 1200px;
+.content-container {
+  max-width: 1400px;
   margin: 0 auto;
+  display: flex;
+  gap: 80px;
+  align-items: center;
 }
 
-.content-section h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: var(--text-dark);
+.content-left {
+  flex: 1;
 }
 
-.content-section h2 {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  color: var(--primary-color);
-  font-weight: 400;
+.slogan {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #000;
+  margin-bottom: 50px;
 }
 
-/* Feature Grid */
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+.content-text h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #222;
 }
 
-.feature-card {
-  background: var(--bg-light);
-  padding: 2rem;
+.content-text h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.content-text p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.content-text .highlight {
+  font-size: 22px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 25px;
+}
+
+.content-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-right img {
+  max-width: 100%;
+  height: auto;
+  display: block;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.feature-card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-  color: var(--primary-color);
-}
-
-/* Automation Section */
-.automation-section {
-  margin: 3rem 0;
-  padding: 2rem;
-  background: var(--bg-light);
+/* Image Placeholder */
+.image-placeholder {
+  width: 100%;
+  min-height: 400px;
+  border: 2px dashed #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9f9f9;
   border-radius: 8px;
 }
 
-.automation-section h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--primary-color);
+.image-placeholder span {
+  color: #999;
+  font-size: 16px;
 }
 
-.automation-section ul {
-  list-style: none;
-  padding-left: 1rem;
+/* Franchise Page */
+.franchise-page {
+  min-height: calc(100vh - 80px);
+  padding: 60px;
+  background: #fafafa;
 }
 
-.automation-section li {
-  padding: 0.5rem 0;
-  position: relative;
-  padding-left: 1.5rem;
-}
-
-.automation-section li:before {
-  content: "▸";
-  position: absolute;
-  left: 0;
-  color: var(--primary-color);
-}
-
-/* Franchise Form */
-.franchise-form {
+.franchise-container {
   max-width: 700px;
-  margin: 3rem auto;
+  margin: 0 auto;
+  background: #fff;
+  padding: 50px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.franchise-container h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.franchise-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  color: var(--text-dark);
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.required {
+  color: #e53e3e;
 }
 
 .form-group input,
 .form-group textarea {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid var(--border-color);
+  padding: 12px 16px;
+  border: 1px solid #ddd;
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: 15px;
   font-family: inherit;
+  transition: border-color 0.2s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: var(--primary-color);
+  border-color: #000;
 }
 
-.privacy-section {
-  margin: 2rem 0;
-  padding: 1.5rem;
-  background: var(--bg-light);
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
 }
 
-.privacy-section h3 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  color: var(--text-dark);
+.consent-group {
+  margin-top: 20px;
 }
 
-.privacy-content {
-  margin-bottom: 1rem;
+.consent-box {
+  background: #f8f8f8;
+  padding: 20px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  border: 1px solid #e5e5e5;
+}
+
+.consent-box h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #000;
+}
+
+.consent-text {
+  font-size: 14px;
   line-height: 1.8;
+  color: #555;
 }
 
-.checkbox-group {
+.checkbox-label {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 15px;
 }
 
-.checkbox-group input[type="checkbox"] {
-  width: auto;
+.checkbox-label input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
 
-.checkbox-group label {
-  cursor: pointer;
-  margin: 0;
-}
-
-.form-alert {
-  padding: 0.75rem;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-  display: none;
-}
-
-.form-alert.error {
-  display: block;
-  background-color: #fee;
-  color: #c00;
-  border: 1px solid #fcc;
-}
-
-.form-alert.success {
-  display: block;
-  background-color: #efe;
-  color: #060;
-  border: 1px solid #cfc;
+.error-message {
+  color: #e53e3e;
+  font-size: 14px;
+  margin-top: 8px;
+  font-weight: 500;
 }
 
 .submit-btn {
-  width: 100%;
-  padding: 1rem;
-  background-color: var(--primary-color);
-  color: white;
+  background: #000;
+  color: #fff;
+  padding: 16px 32px;
   border: none;
   border-radius: 4px;
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background 0.2s ease;
+  margin-top: 10px;
 }
 
 .submit-btn:hover {
-  background-color: var(--hover-color);
+  background: #333;
 }
 
-/* Footer */
-.main-footer {
-  background-color: var(--nav-bg);
-  color: var(--nav-text);
-  padding: 2rem;
-  margin-top: 4rem;
+.success-message {
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+  padding: 20px;
+  border-radius: 6px;
+  margin-top: 30px;
+  text-align: center;
 }
 
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  font-size: 0.9rem;
-}
-
-.footer-content p {
-  margin: 0.5rem 0;
+.success-message p {
+  margin: 5px 0;
+  line-height: 1.6;
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .nav-container {
-    flex-wrap: wrap;
-    height: auto;
-    padding: 1rem;
+    padding: 0 30px;
   }
 
-  .nav-links {
-    order: 3;
-    width: 100%;
+  .nav-menu {
+    gap: 32px;
+  }
+
+  .content-container {
     flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    text-align: center;
-  }
-
-  .lang-switcher {
-    order: 2;
+    gap: 50px;
   }
 
   .slogan {
-    font-size: 1.8rem;
+    font-size: 36px;
   }
 
-  .hero-image img {
-    max-width: 100%;
+  .content-text h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 0 20px;
+    height: auto;
+    flex-wrap: wrap;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 
-  .contact-info {
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
+  .nav-menu {
+    flex-basis: 100%;
+    justify-content: flex-start;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 15px 0 10px;
+    margin: 0 -20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
-  .feature-grid {
-    grid-template-columns: 1fr;
+  .nav-spacer {
+    display: none;
   }
 
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
+  .home-content {
+    padding: 20px;
+  }
+
+  .content-page {
+    padding: 40px 20px;
+  }
+
+  .slogan {
+    font-size: 28px;
+  }
+
+  .franchise-container {
+    padding: 30px 20px;
+  }
+
+  .franchise-container h1 {
+    font-size: 28px;
   }
 }

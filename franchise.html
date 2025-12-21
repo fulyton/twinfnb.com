@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프랜차이즈 신청 - TwinFNB</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="images/logo.jpg" alt="TwinFNB Logo" onerror="this.onerror=null; this.parentElement.classList.add('logo-error'); this.style.display='none';">
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item">홈</a>
+                <a href="daily-noodle.html" class="nav-item">매일 만나면</a>
+                <a href="daily-rice.html" class="nav-item">매일 만나밥</a>
+                <a href="automation.html" class="nav-item">자동화 기계</a>
+                <a href="franchise.html" class="nav-item active">프랜차이즈 신청</a>
+            </div>
+            <div class="nav-spacer"></div>
+        </div>
+    </nav>
+
+    <main class="franchise-page">
+        <div class="franchise-container">
+            <h1>프랜차이즈 신청</h1>
+            <p class="subtitle">트윈에프앤비와 함께 성공적인 사업을 시작하세요</p>
+            
+            <form id="franchiseForm" class="franchise-form">
+                <div class="form-group">
+                    <label for="name">이름 <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">연락처 <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" required placeholder="010-0000-0000">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">이메일 <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="example@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="address">연락주소 <span class="required">*</span></label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">문의내용</label>
+                    <textarea id="message" name="message" rows="5" placeholder="궁금하신 사항을 자유롭게 작성해 주세요"></textarea>
+                </div>
+
+                <div class="form-group consent-group">
+                    <div class="consent-box">
+                        <h3>개인정보 수집·이용 동의 (필수)</h3>
+                        <p class="consent-text">
+                            가맹 상담을 위해 개인정보를 수집·이용하는 것에 동의합니다.<br>
+                            <strong>수집 항목:</strong> 이름, 연락처, 이메일<br>
+                            <strong>이용 목적:</strong> 가맹 상담 및 안내<br>
+                            <strong>보유 기간:</strong> 상담 목적 달성 후 1년
+                        </p>
+                    </div>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
+                        <span>개인정보 수집·이용에 동의합니다 <span class="required">*</span></span>
+                    </label>
+                    <div id="consentError" class="error-message" style="display: none;">개인정보 수집·이용에 동의해 주세요.</div>
+                </div>
+
+                <button type="submit" class="submit-btn">신청하기</button>
+            </form>
+
+            <div id="successMessage" class="success-message" style="display: none;">
+                <p>✓ 프랜차이즈 신청이 완료되었습니다!</p>
+                <p>입력하신 정보가 JSON 파일로 다운로드되었으며, 이메일 초안이 생성되었습니다.</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/app.js"></script>
+</body>
+</html>

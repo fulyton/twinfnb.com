@@ -1,24 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TwinFNB - Redirecting...</title>
-    <script>
-        // Detect browser language and redirect
-        const userLang = navigator.language || navigator.userLanguage;
-        const langCode = userLang.substring(0, 2).toLowerCase();
-        
-        if (langCode === 'ko') {
-            window.location.href = '/kr/index.html';
-        } else if (langCode === 'zh') {
-            window.location.href = '/cn/index.html';
-        } else {
-            window.location.href = '/en/index.html';
-        }
-    </script>
+    <title>TwinFNB - 트위에프앤비에 오신것을 환영합니다.</title>
+    <link rel="stylesheet" href="assets/styles.css">
 </head>
-<body>
-    <p>Redirecting...</p>
+<body class="home-page">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="images/logo.jpg" alt="TwinFNB Logo" onerror="this.onerror=null; this.parentElement.classList.add('logo-error'); this.style.display='none';">
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item active">홈</a>
+                <a href="daily-noodle.html" class="nav-item">매일 만나면</a>
+                <a href="daily-rice.html" class="nav-item">매일 만나밥</a>
+                <a href="automation.html" class="nav-item">자동화 기계</a>
+                <a href="franchise.html" class="nav-item">프랜차이즈 신청</a>
+            </div>
+            <div class="nav-spacer"></div>
+        </div>
+    </nav>
+
+    <main class="home-main">
+        <div class="home-content">
+            <div class="home-image">
+                <img src="image/robot_noodle_01.jpg" alt="Robot Noodle" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=&quot;image-placeholder&quot;><span>이미지를 불러올 수 없습니다</span></div>';">
+            </div>
+        </div>
+        <footer class="home-footer">
+            <p class="contact-info">주소: 인천광역시 중구 영종대로 162번길 20, 스타힐스 301호 | 전화: 1588-8888 | Email: info@twinfnb.com</p>
+        </footer>
+    </main>
+
+    <script src="assets/app.js"></script>
 </body>
 </html>

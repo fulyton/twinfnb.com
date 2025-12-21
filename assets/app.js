@@ -1,120 +1,115 @@
-// Language Switcher Functionality
+// Active navigation highlight based on current page
 document.addEventListener("DOMContentLoaded", () => {
-  const langButtons = document.querySelectorAll(".lang-btn")
+  const currentPath = window.location.pathname.split("/").pop() || "index.html"
+  const navItems = document.querySelectorAll(".nav-item")
 
-  langButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-      const targetLang = this.getAttribute("data-lang")
-      switchLanguage(targetLang)
-    })
+  navItems.forEach((item) => {
+    const href = item.getAttribute("href")
+    if (href === currentPath || (currentPath === "" && href === "index.html")) {
+      item.classList.add("active")
+    } else {
+      item.classList.remove("active")
+    }
   })
+
+  // Franchise form handling
+  const franchiseForm = document.getElementById("franchiseForm")
+  if (franchiseForm) {
+    franchiseForm.addEventListener("submit", handleFranchiseSubmit)
+  }
 })
 
-function switchLanguage(targetLang) {
-  const currentPath = window.location.pathname
+function handleFranchiseSubmit(e) {
+  e.preventDefault()
 
-  // Extract the current page filename
-  const pathParts = currentPath.split("/")
-  const currentPage = pathParts[pathParts.length - 1] || "index.html"
+  const privacyConsent = document.getElementById("privacyConsent")
+  const consentError = document.getElementById("consentError")
 
-  // Determine the new path
-  let newPath
-
-  if (currentPath.includes("/kr/")) {
-    newPath = currentPath.replace("/kr/", `/${targetLang}/`)
-  } else if (currentPath.includes("/en/")) {
-    newPath = currentPath.replace("/en/", `/${targetLang}/`)
-  } else if (currentPath.includes("/cn/")) {
-    newPath = currentPath.replace("/cn/", `/${targetLang}/`)
-  } else {
-    // If no language folder detected, navigate to the target language
-    newPath = `/${targetLang}/${currentPage}`
+  // Check privacy consent
+  if (!privacyConsent.checked) {
+    consentError.style.display = "block"
+    privacyConsent.focus()
+    return false
   }
 
-  window.location.href = newPath
+  consentError.style.display = "none"
+
+  // Collect form data
+  const formData = {
+    name: document.getElementById("name").value,
+    phone: document.getElementById("phone").value,
+    email: document.getElementById("email").value,
+    address: document.getElementById("address").value,
+    message: document.getElementById("message").value,
+    privacyConsent: true,
+    submittedAt: new Date().toISOString(),
+  }
+
+  // 1. Download JSON file
+  downloadJSON(formData)
+
+  // 2. Open mailto with form data
+  openMailto(formData)
+
+  // Show success message
+  const successMessage = document.getElementById("successMessage")
+  successMessage.style.display = "block"
+  successMessage.scrollIntoView({ behavior: "smooth" })
+
+  // Reset form
+  setTimeout(() => {
+    document.getElementById("franchiseForm").reset()
+    successMessage.style.display = "none"
+  }, 5000)
+
+  return false
 }
 
-// Franchise Form Handling
-const franchiseForm = document.getElementById("franchiseForm")
-if (franchiseForm) {
-  franchiseForm.addEventListener("submit", (e) => {
-    e.preventDefault()
+function downloadJSON(data) {
+  const now = new Date()
+  const timestamp = formatDateTime(now)
+  const filename = `franchise-request-${timestamp}.json`
 
-    const formAlert = document.getElementById("formAlert")
-    const privacyConsent = document.getElementById("privacyConsent")
+  const jsonStr = JSON.stringify(data, null, 2)
+  const blob = new Blob([jsonStr], { type: "application/json" })
+  const url = URL.createObjectURL(blob)
 
-    // Check privacy consent
-    if (!privacyConsent.checked) {
-      formAlert.className = "form-alert error"
+  const a = document.createElement("a")
+  a.href = url
+  a.download = filename
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+  URL.revokeObjectURL(url)
+}
 
-      // Get the current language
-      const currentPath = window.location.pathname
-      let alertMessage = "You must agree to the privacy policy."
+function openMailto(data) {
+  const subject = encodeURIComponent(`[Franchise Request] ${data.name} - ${data.phone}`)
 
-      if (currentPath.includes("/kr/")) {
-        alertMessage = "개인정보 수집·이용에 동의해주세요."
-      } else if (currentPath.includes("/cn/")) {
-        alertMessage = "请同意个人信息收集与使用政策。"
-      }
+  const body = `
+프랜차이즈 신청 정보
 
-      formAlert.textContent = alertMessage
-      return
-    }
+이름: ${data.name}
+연락처: ${data.phone}
+이메일: ${data.email}
+연락주소: ${data.address}
+문의내용: ${data.message || "(없음)"}
 
-    // Collect form data
-    const formData = {
-      name: document.getElementById("name").value,
-      phone: document.getElementById("phone").value,
-      email: document.getElementById("email").value,
-      address: document.getElementById("address").value,
-      message: document.getElementById("message").value,
-      privacyConsent: true,
-      timestamp: new Date().toISOString(),
-    }
+개인정보 동의: 동의함
+신청일시: ${data.submittedAt}
+    `.trim()
 
-    // Create JSON file and download
-    const jsonString = JSON.stringify(formData, null, 2)
-    const blob = new Blob([jsonString], { type: "application/json" })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement("a")
-    a.href = url
-    a.download = `franchise-application-${Date.now()}.json`
-    document.body.appendChild(a)
-    a.click()
-    document.body.removeChild(a)
-    URL.revokeObjectURL(url)
+  const mailtoLink = `mailto:info@twinfnb.com?subject=${subject}&body=${encodeURIComponent(body)}`
+  window.location.href = mailtoLink
+}
 
-    // Open email client
-    const subject = encodeURIComponent("Franchise Application - TwinFNB")
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\n` +
-        `Phone: ${formData.phone}\n` +
-        `Email: ${formData.email}\n` +
-        `Address: ${formData.address}\n` +
-        `Message: ${formData.message}\n\n` +
-        `Privacy Consent: Agreed\n` +
-        `Timestamp: ${formData.timestamp}`,
-    )
-    window.location.href = `mailto:info@twinfnb.com?subject=${subject}&body=${body}`
+function formatDateTime(date) {
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, "0")
+  const day = String(date.getDate()).padStart(2, "0")
+  const hours = String(date.getHours()).padStart(2, "0")
+  const minutes = String(date.getMinutes()).padStart(2, "0")
+  const seconds = String(date.getSeconds()).padStart(2, "0")
 
-    // Show success message
-    formAlert.className = "form-alert success"
-
-    const currentPath = window.location.pathname
-    let successMessage = "Form submitted successfully! JSON file downloaded and email client opened."
-
-    if (currentPath.includes("/kr/")) {
-      successMessage = "제출이 완료되었습니다! JSON 파일이 다운로드되고 이메일 클라이언트가 열렸습니다."
-    } else if (currentPath.includes("/cn/")) {
-      successMessage = "提交成功！JSON文件已下载，邮件客户端已打开。"
-    }
-
-    formAlert.textContent = successMessage
-
-    // Reset form
-    setTimeout(() => {
-      franchiseForm.reset()
-      formAlert.style.display = "none"
-    }, 5000)
-  })
+  return `${year}${month}${day}-${hours}${minutes}${seconds}`
 }
