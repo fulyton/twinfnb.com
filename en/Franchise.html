@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TwinFNB Franchise Application">
-    <title>TwinFNB - Franchise</title>
+    <title>Franchise - TwinFNB</title>
     <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="main-nav">
         <div class="nav-container">
             <div class="nav-logo">
                 <img src="../assets/logo.svg" alt="TwinFNB Logo">
-                <span>TwinFNB</span>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -29,88 +27,62 @@
         </div>
     </nav>
 
-    <main class="content-page franchise-page">
-        <section class="hero-section">
+    <main class="page-content">
+        <section class="content-section">
             <h1>Franchise Application</h1>
-            <p class="hero-subtitle">Start a successful business with TwinFNB</p>
-        </section>
-
-        <section class="franchise-info">
-            <h2>Franchise Items</h2>
-            <div class="franchise-items">
-                <div class="franchise-item-card">
-                    <h3>Daily Noodle</h3>
-                    <p>Unmanned noodle shop concept</p>
-                </div>
-                <div class="franchise-item-card">
-                    <h3>Daily Rice</h3>
-                    <p>Automatic fried rice delivery specialist</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="franchise-form-section">
-            <h2>Franchise Consultation Application</h2>
+            
             <form id="franchiseForm" class="franchise-form">
                 <div class="form-group">
                     <label for="name">Name *</label>
                     <input type="text" id="name" name="name" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="phone">Phone *</label>
                     <input type="tel" id="phone" name="phone" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="email">Email *</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="address">Address</label>
                     <input type="text" id="address" name="address">
                 </div>
-                
+
                 <div class="form-group">
                     <label for="message">Message</label>
                     <textarea id="message" name="message" rows="5"></textarea>
                 </div>
-                
+
                 <div class="privacy-section">
                     <h3>Consent to Collection & Use of Personal Information (Required)</h3>
                     <div class="privacy-content">
                         <p>I agree to the collection and use of personal information for franchise consultation.</p>
-                        <ul>
-                            <li><strong>Items collected:</strong> Name, Phone, Email</li>
-                            <li><strong>Purpose:</strong> Franchise consultation and guidance</li>
-                            <li><strong>Retention:</strong> 1 year after the consultation purpose is fulfilled</li>
-                        </ul>
+                        <p><strong>Items collected:</strong> Name, Phone, Email</p>
+                        <p><strong>Purpose:</strong> Franchise consultation and guidance</p>
+                        <p><strong>Retention:</strong> 1 year after the consultation purpose is fulfilled</p>
                     </div>
                     <div class="checkbox-group">
                         <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
-                        <label for="privacyConsent">I agree to the collection and use of personal information</label>
+                        <label for="privacyConsent">I have read and agree to the above.</label>
                     </div>
                 </div>
-                
-                <button type="submit" class="submit-button">Submit</button>
+
+                <div class="form-alert" id="formAlert"></div>
+
+                <button type="submit" class="submit-btn">Submit</button>
             </form>
-            <div id="formMessage" class="form-message"></div>
         </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="main-footer">
         <div class="footer-content">
-            <div class="footer-section">
-                <h4>TwinFNB</h4>
-                <p>Global Food-Tech Automation Company</p>
-            </div>
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <p>Address: 20, Yeongjong-daero 162beon-gil, Jung-gu, Incheon, Starhills 301</p>
-                <p>Tel: 1588-8888</p>
-                <p>Email: info@twinfnb.com</p>
-            </div>
+            <p><strong>Address:</strong> 20, Yeongjong-daero 162beon-gil, Jung-gu, Incheon, Starhills 301</p>
+            <p><strong>Tel:</strong> 1588-8888</p>
+            <p><strong>Email:</strong> info@twinfnb.com</p>
         </div>
     </footer>
 
